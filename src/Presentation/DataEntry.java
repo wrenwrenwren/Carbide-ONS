@@ -7,7 +7,6 @@ package Presentation;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -38,7 +37,6 @@ public class DataEntry extends javax.swing.JFrame {
         loadAccountNames("normal"); 
     }
     
-    ArrayList <data_entry_table> total_data_entry_table = new ArrayList <data_entry_table>();
     DateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
     Date dt = new Date();
     
@@ -51,7 +49,6 @@ public class DataEntry extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -78,13 +75,6 @@ public class DataEntry extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Date:");
 
@@ -178,25 +168,25 @@ public class DataEntry extends javax.swing.JFrame {
                     .addComponent(jTextField2)
                     .addComponent(jTextField3)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField5)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(118, 118, 118)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField5)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
@@ -219,9 +209,7 @@ public class DataEntry extends javax.swing.JFrame {
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41))
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(148, 148, 148)
+                .addGap(262, 262, 262)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -248,7 +236,7 @@ public class DataEntry extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
@@ -261,10 +249,8 @@ public class DataEntry extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jButton2)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,7 +264,31 @@ public class DataEntry extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        
+        String to_select = String.valueOf(jComboBox3.getSelectedItem());
+
+        if (to_select.equals("Absolute")){
+            loadAccountNames("normal");
+        } else {
+            loadAccountNames("hedge");
+        }
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                
         String date = jTextField1.getText().replaceAll(" ","");
         String symbol = jTextField2.getText().replaceAll(" ","");
         
@@ -323,86 +333,66 @@ public class DataEntry extends javax.swing.JFrame {
 
         } else {
             if (account != "ALL"){
-                data_entry_table new_entry = new data_entry_table();
+                
+                String accDBname = String.valueOf(jComboBox3.getSelectedItem());
+                
+                Object[] entryList = new Object[11];
+                entryList[0] = date;
+                entryList[1] = symbol;
+                entryList[2] = amount;
+                entryList[3] = strike;
+                entryList[4] = price;
+                entryList[5] = type;
+                entryList[6] = expiry;
+                entryList[7] = month;
+                entryList[8] = comments;
+                entryList[9] = account;
+                entryList[10] = accDBname;
+                
+                MysqlConnect mysqldbconnect = new MysqlConnect();
+                mysqldbconnect.insertSingleEntry(entryList);
 
-                new_entry.Date = date;
-                new_entry.Symbol = symbol;
-                new_entry.Amount = amount;
-                new_entry.Strike = strike;
-                new_entry.Price = price;
-                new_entry.Type = type;
-                new_entry.Expiry = expiry;
-                new_entry.Month = month;
-                new_entry.Comments = comments;
-                new_entry.Account = account;
-
-                total_data_entry_table.add(new_entry);
             } else {
-                try {
-                    
-                    String to_select = String.valueOf(jComboBox3.getSelectedItem());
-                    String homedirec = System.getProperty("user.home");
-                    String account_weights_direc = null;
-                    
-                    if (to_select.equals("Absolute")){
-                        account_weights_direc = homedirec + "/carbide/accounts/account_weights.csv";
-                    } else {
-                        account_weights_direc = homedirec + "/carbide/accounts/account_weights_hedge.csv";
-                    }
-
-                    BufferedReader br = null;
-
-                    Object[][] data = new Object[0][0];
-                    String line = "";
-                    String splitSign = ",";
-
-                    int i = 0;
-                    br = new BufferedReader(new FileReader(account_weights_direc));
-
-                    while (br.readLine() != null) {
-                        i++;
-                    }
-                    br.close();
-                    data = new Object[i - 1][];
-                    i = 0;
-                    br = new BufferedReader(new FileReader(account_weights_direc));
-                    line = br.readLine();
-
-                    line = br.readLine();
-                    while (line != null) {
-                        data[i] = new Object[line.split(splitSign).length];
-
-                        for (int j = 0; j < data[i].length; j++) {
-                            data[i][j] = line.split(splitSign)[j];
-                        }
-                        i++;
-                        line = br.readLine();
-                    }
-
-                    for (int j = 0; j < data.length; j++){
-
-                        data_entry_table new_entry = new data_entry_table();
-
-                        new_entry.Date = date;
-                        new_entry.Symbol = symbol;
-                        float weight_to_use = Float.parseFloat((String) data[j][3]);
-                        new_entry.Amount = Math.round(amount * weight_to_use);
-                        new_entry.Strike = strike;
-                        new_entry.Price = price;
-                        new_entry.Type = type;
-                        new_entry.Expiry = expiry;
-                        new_entry.Month = month;
-                        new_entry.Comments = comments;
-                        new_entry.Account = (String) data[j][0] + "-" + (String) data[j][1];
-
-                        total_data_entry_table.add(new_entry);
-                    }
-
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(DataEntry.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(DataEntry.class.getName()).log(Level.SEVERE, null, ex);
+                
+                String accDBname = String.valueOf(jComboBox3.getSelectedItem());
+                String accDBnameTune = "";
+                
+                if (accDBname == "Absolute"){
+                    accDBnameTune = "normal";
+                } else if (accDBname == "Hedge") {
+                    accDBnameTune = "hedge";
                 }
+                
+                Object[][] AccInfo = null;
+                MysqlConnect mysqldbconnect = new MysqlConnect();
+                AccInfo = mysqldbconnect.queryAllocation(accDBnameTune);
+
+                int numRow = AccInfo.length;
+                                
+                Object[][] entryList = new Object[numRow][11];
+                
+                for (int j = 0; j < AccInfo.length; j++){
+                    
+                    entryList[j][0] = date;
+                    entryList[j][1] = symbol;
+                    float weight_to_use = Float.parseFloat((String) AccInfo[j][3]);
+                    int intalloamount = Math.round(amount * weight_to_use); 
+                    float alloAmount = (float) intalloamount;
+                                        
+                    entryList[j][2] = alloAmount;
+                    entryList[j][3] = strike;
+                    entryList[j][4] = price;
+                    entryList[j][5] = type;
+                    entryList[j][6] = expiry;
+                    entryList[j][7] = month;
+                    entryList[j][8] = comments;
+                    entryList[j][9] = (String) AccInfo[j][0] + "-" + (String) AccInfo[j][1];
+                    entryList[j][10] = accDBname;
+                    
+                }
+                
+                MysqlConnect mysqldbconnect2 = new MysqlConnect();
+                mysqldbconnect2.insertBatchEntry(entryList);
             } 
 
             jTextField1.setText(sdf.format(dt));
@@ -416,209 +406,11 @@ public class DataEntry extends javax.swing.JFrame {
             jComboBox1.setSelectedIndex(0);
             jComboBox2.setSelectedIndex(0);
             jComboBox3.setSelectedIndex(0);
-        }
-        
-   
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }        
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        
-        String to_select = String.valueOf(jComboBox3.getSelectedItem());
-
-        if (to_select.equals("Absolute")){
-            loadAccountNames("normal");
-        } else {
-            loadAccountNames("hedge");
-        }
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        
-        
-        
-        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public class data_entry_table {
-        public String Date;
-        public String Symbol;
-        public float Amount;
-        public float Strike;
-        public float Price;
-        public String Type;
-        public String Expiry;
-        public String Month;
-        public String Comments;
-        public String Account;
-
-        public  String getDate(){
-            return Date;
-        }
-        
-        public String getSymbol(){
-            return Symbol;
-        }
-        
-        public float getAmount(){
-            return Amount;
-        }
-        
-        public float getStrike(){
-            return Strike;
-        }
-        
-        public float getPrice(){
-            return Price;
-        }
-        
-        public  String getType(){
-            return Type;
-        }
-        
-        public String getExpiry(){
-            return Expiry;
-        }
-        
-        public String getMonth(){
-            return Month;
-        }
-        
-        public String getComments(){
-            return Comments;
-        }
-        
-        public String getAccount(){
-            return Account;
-        }
-        
-        public void setDate(String Date){
-            this.Date = Date;
-        }
-        
-        public void setSymbol(String Symbol){
-            this.Symbol = Symbol;
-        }
-        
-        public void setAmount(float Amount){
-            this.Amount = Amount;
-        }
-        
-        public void setStrike(float Strike){
-            this.Strike = Strike;
-        }
-        
-        public void setPrice(float Price){
-            this.Price = Price;
-        }
-        
-        public void setType(String Type){
-            this.Type = Type;
-        }
-        
-        public void setExpiry(String Expiry){
-            this.Expiry = Expiry;
-        }
-        
-        public void setMonth(String Month){
-            this.Month = Month;
-        }
-        
-        public void setComments(String Comments){
-            this.Comments = Comments;
-        }
-        
-        public void setAccount(String Account){
-            this.Account = Account;
-        }
-        
-    }
-    
-    
-    public static final String CSV_SEPARATOR = ",";
-    
-    public static void writeToCSV(ArrayList<data_entry_table> data_entered, String savepath) throws FileNotFoundException { 
-
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH_mm_ss");
-            Date date = new Date();
-            String file_to_save = savepath + "/" + dateFormat.format(date) + ".csv";
-            
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file_to_save), "UTF-8"));
-            
-            StringBuffer header = new StringBuffer();            
-            header.append("Date");
-            header.append(CSV_SEPARATOR);
-            header.append("Symbol");
-            header.append(CSV_SEPARATOR);
-            header.append("Amount");
-            header.append(CSV_SEPARATOR);
-            header.append("Strike");
-            header.append(CSV_SEPARATOR);
-            header.append("Price");
-            header.append(CSV_SEPARATOR);
-            header.append("Type");
-            header.append(CSV_SEPARATOR);
-            header.append("Expiry");
-            header.append(CSV_SEPARATOR);
-            header.append("Month");
-            header.append(CSV_SEPARATOR);
-            header.append("Comments");
-            header.append(CSV_SEPARATOR);
-            header.append("Account");
-            bw.write(header.toString());
-            bw.newLine();
-          
-            
-            for (data_entry_table items : data_entered)
-            {
-                StringBuffer oneLine = new StringBuffer();
-                
-                oneLine.append(items.getDate());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getSymbol());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getAmount());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getStrike());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getPrice());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getType());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getExpiry());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getMonth());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getComments());
-                oneLine.append(CSV_SEPARATOR);
-                oneLine.append(items.getAccount());
-                System.out.println(oneLine.toString());
-                bw.write(oneLine.toString());
-                bw.newLine();
-            }
-            bw.flush();
-            bw.close();
-        }
-        
-        catch (UnsupportedEncodingException e) {}
-        catch (FileNotFoundException e){}
-        catch (IOException e){}
-
-    }
     
     public void loadAccountNames(String accName){
         
@@ -643,7 +435,6 @@ public class DataEntry extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

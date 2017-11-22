@@ -5,17 +5,6 @@
  */
 package Presentation;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -33,32 +22,85 @@ public class AllocationView extends javax.swing.JFrame {
     /**
      * Creates new form allocation_view
      */
+    
+    public String CurrAccType = "";
+    
     public AllocationView(String accDBName) {
         initComponents();
+        setCurrentAccType(accDBName);
         loadAccWeights(accDBName);
     }
+    
+    public void setCurrentAccType(String accDBName){
+        CurrAccType = accDBName;
+    }
+    
+    public String getCurrentAccType(){
+        return(CurrAccType);
+    }
+    
     
     public void loadAccWeights(String accDBName){
         
         Object[][] AccInfo = null;
-        
+        Object[][] AccNameInfo = null;
+                
         String[] columnNames = new String[4];
         columnNames[0] = "FCM";
-        columnNames[1] = "Account Name";
-        columnNames[2] = "Nominal Value";
+        columnNames[1] = "Account";
+        columnNames[2] = "Nominal";
         columnNames[3] = "Weights";
            
         MysqlConnect mysqldbconnect = new MysqlConnect();
         AccInfo = mysqldbconnect.queryAllocation(accDBName);
         
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(AccInfo, columnNames));
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        jTable1.setRowSorter(sorter); 
-
+        MysqlConnect mysqldbconnect2 = new MysqlConnect();
+        AccNameInfo = mysqldbconnect2.queryAccount(accDBName);
         
+        int numAcc = AccInfo.length;
+        int numAccName = AccNameInfo.length;
 
+        if (numAccName == numAcc){
+            
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(AccInfo, columnNames));
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+            jTable1.setRowSorter(sorter); 
+            
+        } 
+        
+        else {
+            int numCol = AccInfo[0].length;
+            
+            Object[][] newAccInfo = new Object[numAccName][numCol];
+            
+            for (int i = 0; i < numAccName; i++){
+                newAccInfo[i][0] = AccNameInfo[i][0];
+                newAccInfo[i][1] = AccNameInfo[i][1];
+                String currAccinfoOne = (String) newAccInfo[i][0];
+                String currAccinfoTwo = (String) newAccInfo[i][1];
+               
+                for (int j = 0; j < numAcc; j++){
+                    String loopingAccinfoOne = (String) AccInfo[j][0];
+                    String loopingAccinfoTwo = (String) AccInfo[j][1];
+                    
+                    if (loopingAccinfoOne.equals(currAccinfoOne) && loopingAccinfoTwo.equals(currAccinfoTwo)){
+                        newAccInfo[i][2] = AccInfo[j][2];
+                        newAccInfo[i][3] = AccInfo[j][3];
+                    } else{
+                        newAccInfo[i][2] = "";
+                        newAccInfo[i][3] = "";
+                    }
+                }
+            }
+            
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(newAccInfo, columnNames));
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+            jTable1.setRowSorter(sorter); 
+            
+            
+        }
     }
     
     
@@ -192,8 +234,8 @@ public class AllocationView extends javax.swing.JFrame {
         
         String[] columnNames = new String[4];
         columnNames[0] = "FCM";
-        columnNames[1] = "Account Name";
-        columnNames[2] = "Nominal Value";
+        columnNames[1] = "Account";
+        columnNames[2] = "Nominal";
         columnNames[3] = "Weights";
                 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(table_weights, columnNames));
@@ -205,10 +247,11 @@ public class AllocationView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         
+        
+        String whichType = getCurrentAccType();
         Object[][] tableData = getTableData(jTable1);
         MysqlConnect mysqldbconnect = new MysqlConnect();
-        mysqldbconnect.updateAllocation("normal", tableData);
+        mysqldbconnect.updateAllocation(whichType, tableData);
 
     }//GEN-LAST:event_jButton1ActionPerformed
     
